@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="midnight_navy">#FF102A43</color>
+    <color name="deep_teal">#FF0F766E</color>
+    <color name="slate_mist">#FFE3ECE8</color>
+    <color name="warm_sand">#FFF4D58D</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

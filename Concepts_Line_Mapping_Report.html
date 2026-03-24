@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intruder Selfie UI Concept Mapping Report</title>
+  <style>
+    :root {
+      --ink: #1f2937;
+      --muted: #5b6470;
+      --accent: #0f766e;
+      --accent-soft: #e6fffb;
+      --line: #d7dde5;
+      --paper: #ffffff;
+      --panel: #f7fafc;
+    }
+    body {
+      font-family: "Liberation Serif", Georgia, serif;
+      color: var(--ink);
+      background: var(--paper);
+      margin: 0;
+      line-height: 1.45;
+      font-size: 11pt;
+    }
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 36px 40px 60px;
+    }
+    h1, h2, h3 {
+      color: #102a43;
+      margin-bottom: 0.35em;
+    }
+    h1 {
+      font-size: 24pt;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+    }
+    h2 {
+      font-size: 16pt;
+      margin-top: 26px;
+      border-left: 5px solid var(--accent);
+      padding-left: 12px;
+    }
+    p, li, td, th {
+      font-size: 11pt;
+    }
+    .meta, .note {
+      color: var(--muted);
+    }
+    .note {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      border-radius: 6px;
+    }
+    .box {
+      background: var(--accent-soft);
+      border: 1px solid #b7efe8;
+      padding: 12px 14px;
+      border-radius: 6px;
+      margin: 14px 0;
+    }
+    code {
+      font-family: "Liberation Mono", Consolas, monospace;
+      font-size: 10pt;
+      background: #f1f5f9;
+      padding: 1px 4px;
+      border-radius: 4px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      background: #eef7f6;
+    }
+    .mono {
+      font-family: "Liberation Mono", Consolas, monospace;
+      font-size: 9.6pt;
+      white-space: pre-wrap;
+    }
+    .page-break {
+      page-break-before: always;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Intruder Selfie UI Concept Mapping Report</h1>
+    <p class="meta">
+      Project reviewed: <code>/home/exploitforge/AndroidStudioProjects/Intruder_serlfie</code>
+    </p>
+    <p class="meta">
+      Main code file reviewed: <code>/home/exploitforge/AndroidStudioProjects/Intruder_serlfie/app/src/main/kotlin/com/example/intruderselfieui/MainActivity.kt</code>
+    </p>
+    <p class="meta">
+      Notes source actually found on this machine: <code>/home/exploitforge/Documents/School/lvl3s2/Android</code>
+    </p>
+    <p class="note">
+      The request referenced <code>/home/exploitforge/Documents/School/lvl3s2/Androids</code>, but that path does not exist here.
+      This report uses the real folder <code>Android</code>, especially
+      <code>kotlin_class_notes_master_guide.html</code>, which summarizes the class topics.
+    </p>
+
+    <h2>Method</h2>
+    <p>
+      This report maps only the Kotlin concepts from the notes that are visibly used in the current app code.
+      It does not claim that every topic in the notes is implemented in the app.
+      Each mapping includes the notes section, the concept, and the exact code line or line block where the concept appears.
+    </p>
+
+    <h2>Concept Mapping Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Notes Section</th>
+          <th>Concept Used</th>
+          <th>Exact Code Line(s)</th>
+          <th>How It Is Used In This App</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1. Kotlin Basics</td>
+          <td><code>fun</code> function declaration</td>
+          <td class="mono">MainActivity.kt:56-68
+MainActivity.kt:108-236
+MainActivity.kt:239-669</td>
+          <td>Functions define the app entry point, composable UI units, and helper logic.</td>
+        </tr>
+        <tr>
+          <td>1. Kotlin Basics</td>
+          <td><code>val</code> and <code>var</code></td>
+          <td class="mono">MainActivity.kt:53
+MainActivity.kt:109-112
+MainActivity.kt:114-116</td>
+          <td><code>val</code> is used for fixed values like the sample password and derived state, while <code>var</code> is used for mutable Compose screen state.</td>
+        </tr>
+        <tr>
+          <td>1. Kotlin Basics</td>
+          <td>Type inference</td>
+          <td class="mono">MainActivity.kt:100-104
+MainActivity.kt:109-116
+MainActivity.kt:240-244
+MainActivity.kt:512-516</td>
+          <td>Several values are declared without explicit types because Kotlin infers them from the assigned expressions.</td>
+        </tr>
+        <tr>
+          <td>2. Null Safety</td>
+          <td>Nullable type with <code>?</code></td>
+          <td class="mono">MainActivity.kt:82
+MainActivity.kt:120
+MainActivity.kt:537-539</td>
+          <td><code>ownerNote</code> is declared as <code>String?</code> and handled as an optional value in the UI state.</td>
+        </tr>
+        <tr>
+          <td>2. Null Safety</td>
+          <td>Safe handling of optional values</td>
+          <td class="mono">MainActivity.kt:120
+MainActivity.kt:537-539</td>
+          <td><code>ifBlank { null }</code> converts blank text to null, and <code>?.let</code> displays the note only when it exists.</td>
+        </tr>
+        <tr>
+          <td>3. Conditionals</td>
+          <td><code>if</code> expression</td>
+          <td class="mono">MainActivity.kt:161
+MainActivity.kt:168-173
+MainActivity.kt:187-190
+MainActivity.kt:193-198
+MainActivity.kt:442-445
+MainActivity.kt:479</td>
+          <td>The code uses <code>if</code> to choose tabs, guard gallery access, reset error state, control keypad input, and switch text and colors based on state.</td>
+        </tr>
+        <tr>
+          <td>3. Conditionals</td>
+          <td><code>when</code> expression</td>
+          <td class="mono">MainActivity.kt:221-233
+MainActivity.kt:240-244
+MainActivity.kt:512-516
+MainActivity.kt:640-661</td>
+          <td><code>when</code> is used to switch screens, compute UI colors, and map access or capture states into readable text.</td>
+        </tr>
+        <tr>
+          <td>4. Functions</td>
+          <td>Regular function syntax</td>
+          <td class="mono">MainActivity.kt:56-68
+MainActivity.kt:108-236
+MainActivity.kt:239-639
+MainActivity.kt:666-669</td>
+          <td>The app uses standard Kotlin functions for the activity lifecycle, composables, and helper routines.</td>
+        </tr>
+        <tr>
+          <td>4. Functions</td>
+          <td>Expression-body functions</td>
+          <td class="mono">MainActivity.kt:640-661</td>
+          <td>Helper functions such as <code>captureStatus</code>, <code>verifyOwnerPassword</code>, <code>accessLabel</code>, and <code>accessMessage</code> use the short expression-body form.</td>
+        </tr>
+        <tr>
+          <td>5. Collections</td>
+          <td><code>List</code> and read-only collections</td>
+          <td class="mono">MainActivity.kt:100-104
+MainActivity.kt:548
+MainActivity.kt:164
+MainActivity.kt:624</td>
+          <td>The app uses read-only lists for sample captures, screen options, and color sets.</td>
+        </tr>
+        <tr>
+          <td>5. Collections</td>
+          <td>Collection operations</td>
+          <td class="mono">MainActivity.kt:114
+MainActivity.kt:164
+MainActivity.kt:371-376
+MainActivity.kt:453-458
+MainActivity.kt:549
+MainActivity.kt:582-584</td>
+          <td>The code uses <code>maxOf</code>, <code>forEach</code>, and <code>count</code> on collections to derive UI state and render repeated UI elements.</td>
+        </tr>
+        <tr>
+          <td>6. Lambdas and Higher-Order Functions</td>
+          <td>Lambdas</td>
+          <td class="mono">MainActivity.kt:114
+MainActivity.kt:164-177
+MainActivity.kt:186-218
+MainActivity.kt:371-376
+MainActivity.kt:453-458
+MainActivity.kt:549
+MainActivity.kt:582-584</td>
+          <td>The UI uses lambdas for state updates, button callbacks, iteration bodies, and collection queries.</td>
+        </tr>
+        <tr>
+          <td>6. Lambdas and Higher-Order Functions</td>
+          <td>Higher-order function usage</td>
+          <td class="mono">MainActivity.kt:114
+MainActivity.kt:164
+MainActivity.kt:371
+MainActivity.kt:453
+MainActivity.kt:549
+MainActivity.kt:582</td>
+          <td>Functions such as <code>maxOf</code>, <code>forEach</code>, and <code>count</code> accept lambdas and are used directly in the UI logic.</td>
+        </tr>
+        <tr>
+          <td>7. Classes and Constructors</td>
+          <td>Class declaration and primary constructor properties</td>
+          <td class="mono">MainActivity.kt:55-69
+MainActivity.kt:71-87
+MainActivity.kt:332-341
+MainActivity.kt:488</td>
+          <td>The activity is declared as a class, and the data classes define properties directly in the class header using primary constructors.</td>
+        </tr>
+        <tr>
+          <td>8. Inheritance and Polymorphism</td>
+          <td>Inheritance with <code>:</code> and <code>override</code></td>
+          <td class="mono">MainActivity.kt:55-56</td>
+          <td><code>MainActivity</code> inherits from <code>ComponentActivity</code> and overrides <code>onCreate</code>.</td>
+        </tr>
+        <tr>
+          <td>10. Data Classes and Sealed Classes</td>
+          <td><code>data class</code></td>
+          <td class="mono">MainActivity.kt:71-87</td>
+          <td><code>IntruderCapture</code> and <code>AccessPreview</code> model UI data using Kotlin data classes.</td>
+        </tr>
+        <tr>
+          <td>10. Data Classes and Sealed Classes</td>
+          <td><code>sealed class</code></td>
+          <td class="mono">MainActivity.kt:89-98</td>
+          <td><code>AccessState</code> and <code>PreviewScreen</code> define a fixed set of valid UI states.</td>
+        </tr>
+        <tr>
+          <td>10. Data Classes and Sealed Classes</td>
+          <td>Sealed-state branching</td>
+          <td class="mono">MainActivity.kt:168-173
+MainActivity.kt:652-661</td>
+          <td>The app branches on sealed-state values to restrict access and present readable status messages.</td>
+        </tr>
+        <tr>
+          <td>11. Other OOP Features</td>
+          <td>Visibility modifiers</td>
+          <td class="mono">MainActivity.kt:53
+MainActivity.kt:71
+MainActivity.kt:78
+MainActivity.kt:89
+MainActivity.kt:95
+MainActivity.kt:100
+MainActivity.kt:108
+MainActivity.kt:239-669</td>
+          <td>Most app-level models and helpers are marked <code>private</code>, keeping them scoped to the file.</td>
+        </tr>
+        <tr>
+          <td>11. Other OOP Features</td>
+          <td>Custom getter</td>
+          <td class="mono">MainActivity.kt:85-86</td>
+          <td><code>isThresholdReached</code> is implemented as a computed property with a custom getter.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h2>Exact Notes Source Used</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Source File</th>
+          <th>Relevant Notes Sections Used For This Mapping</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mono">/home/exploitforge/Documents/School/lvl3s2/Android/kotlin_class_notes_master_guide.html</td>
+          <td>
+            1. Kotlin Basics<br />
+            2. Null Safety<br />
+            3. Conditionals<br />
+            4. Functions<br />
+            5. Collections<br />
+            6. Lambdas and Higher-Order Functions<br />
+            7. Classes and Constructors<br />
+            8. Inheritance and Polymorphism<br />
+            10. Data Classes and Sealed Classes<br />
+            11. Other OOP Features
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Concepts From Notes Not Yet Used In This UI</h2>
+    <p>
+      The current app does not yet visibly use every topic in the notes.
+      Examples not yet present in this code include interfaces, abstract classes, sets, maps, named arguments as a teaching focus, infix functions, extension functions, companion objects, inner classes, <code>lateinit</code>, <code>lazy</code>, delegation, and explicit Elvis-operator usage.
+    </p>
+
+    <div class="box">
+      Summary: the current Intruder Selfie UI already demonstrates core class-note concepts around functions, mutability, null safety, conditional logic, collections, lambdas, data classes, sealed classes, inheritance, and visibility control.
+    </div>
+  </main>
+</body>
+</html>

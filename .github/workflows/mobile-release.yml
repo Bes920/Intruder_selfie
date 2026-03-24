@@ -25,9 +25,17 @@ jobs:
           java-version: "17"
           cache: gradle
 
-      - name: Decode Android keystore
-        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
-        run: echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > app/release.keystore
+      - name: Decode Android keystore (optional)
+        shell: bash
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$ANDROID_KEYSTORE_BASE64" ]; then
+            echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > app/release.keystore
+            echo "Keystore decoded."
+          else
+            echo "No ANDROID_KEYSTORE_BASE64 secret configured; continuing without signing keystore."
+          fi
 
       - name: Build Android release artifacts
         env:

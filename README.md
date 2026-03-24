@@ -47,7 +47,10 @@ This repo now includes a GitHub Actions workflow at `.github/workflows/mobile-re
 What it does:
 * Builds Android release artifacts (`.apk` and `.aab`).
 * Uploads artifacts to the workflow run for download.
-* On tag pushes like `v1.0.0`, attaches artifacts to a GitHub Release.
+* Creates/updates a GitHub Release and attaches artifacts.
+* Trigger options:
+* Push a tag like `v1.0.0`.
+* Run manually via Actions (`workflow_dispatch`) and provide `release_tag` (example: `v1.0.0`).
 * Attempts an iOS release build only when an `ios/` Xcode project/workspace exists.
 
 Optional Android signing secrets:

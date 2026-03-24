@@ -41,5 +41,22 @@ Here's a preview of the prototype screens:
 *   `build.gradle.kts`: Project and app-level build configurations.
 *   `libs.versions.toml`: Centralized dependency management.
 
+## CI/CD Release Workflow
+This repo now includes a GitHub Actions workflow at `.github/workflows/mobile-release.yml`.
+
+What it does:
+* Builds Android release artifacts (`.apk` and `.aab`).
+* Uploads artifacts to the workflow run for download.
+* On tag pushes like `v1.0.0`, attaches artifacts to a GitHub Release.
+* Attempts an iOS release build only when an `ios/` Xcode project/workspace exists.
+
+Optional Android signing secrets:
+* `ANDROID_KEYSTORE_BASE64`
+* `ANDROID_KEYSTORE_PASSWORD`
+* `ANDROID_KEY_ALIAS`
+* `ANDROID_KEY_PASSWORD`
+
+Without signing secrets, Android release artifacts are still built, but are not production-signed.
+
 ---
 *Note: This version is a UI-only prototype. Real camera integration, persistent storage (Room), and biometric authentication are planned for future versions.*

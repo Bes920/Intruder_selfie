@@ -42,20 +42,14 @@ Here's a preview of the prototype screens:
 *   `libs.versions.toml`: Centralized dependency management.
 
 ## CI/CD Release Workflow
-This repo now includes a GitHub Actions workflow at `.github/workflows/mobile-release.yml`.
+This repo includes a GitHub Actions workflow at `.github/workflows/android-release.yml`.
 
 What it does:
-* Builds Android release artifacts (`.apk` and `.aab`).
-* Uploads artifacts to the workflow run for download.
-* Creates/updates a GitHub Release and attaches artifacts.
-* Trigger options:
-* Push a tag like `v1.0.0`.
-* Run manually via Actions (`workflow_dispatch`) and provide `release_tag` (example: `v1.0.0`).
-* Runs an iOS release build only when an `ios/` Xcode project/workspace exists in the repo.
-
-Current repo status:
-* This repository currently contains only the Android app module.
-* The workflow is ready for iOS, but it will skip the iOS release job until an `ios/` project is added.
+* Builds Android release artifacts (`.apk` and `.aab`) on every push to `main`.
+* Uploads Android artifacts to the workflow run for download.
+* Creates or updates a GitHub Release and attaches the Android artifacts when:
+* A tag like `v1.0.0` is pushed.
+* The workflow is run manually with `release_tag` set to a value like `v1.0.0`.
 
 Optional Android signing secrets:
 * `ANDROID_KEYSTORE_BASE64`

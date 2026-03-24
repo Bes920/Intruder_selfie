@@ -15,9 +15,32 @@ permissions:
   contents: write
 
 jobs:
+  detect-platforms:
+    name: Detect Release Targets
+    runs-on: ubuntu-latest
+    outputs:
+      ios_enabled: ${{ steps.platforms.outputs.ios_enabled }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect available mobile targets
+        id: platforms
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ -d ios ] && find ios \( -name "*.xcworkspace" -o -name "*.xcodeproj" \) | grep -q .; then
+            echo "ios_enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ios_enabled=false" >> "$GITHUB_OUTPUT"
+          fi
+
   android-release:
     name: Android Release
     runs-on: ubuntu-latest
+    needs: detect-platforms
 
     steps:
       - name: Checkout
@@ -92,7 +115,10 @@ jobs:
   ios-release:
     name: iOS Release
     runs-on: macos-latest
-    needs: android-release
+    needs:
+      - detect-platforms
+      - android-release
+    if: ${{ needs.detect-platforms.outputs.ios_enabled == 'true' }}
 
     steps:
       - name: Checkout
@@ -140,11 +166,8 @@ jobs:
             exit 0
           fi
 
-          echo "No iOS workspace/project found under ios/. Skipping iOS release build."
-          echo "enabled=false" >> "$GITHUB_OUTPUT"
-          echo "workspace=" >> "$GITHUB_OUTPUT"
-          echo "project=" >> "$GITHUB_OUTPUT"
-          echo "scheme=" >> "$GITHUB_OUTPUT"
+          echo "No iOS workspace/project found under ios/."
+          exit 1
 
       - name: Build iOS app (Release simulator)
         if: ${{ steps.ios_meta.outputs.enabled == 'true' }}

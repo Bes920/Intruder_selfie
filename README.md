@@ -51,7 +51,11 @@ What it does:
 * Trigger options:
 * Push a tag like `v1.0.0`.
 * Run manually via Actions (`workflow_dispatch`) and provide `release_tag` (example: `v1.0.0`).
-* Attempts an iOS release build only when an `ios/` Xcode project/workspace exists.
+* Runs an iOS release build only when an `ios/` Xcode project/workspace exists in the repo.
+
+Current repo status:
+* This repository currently contains only the Android app module.
+* The workflow is ready for iOS, but it will skip the iOS release job until an `ios/` project is added.
 
 Optional Android signing secrets:
 * `ANDROID_KEYSTORE_BASE64`

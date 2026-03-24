@@ -2,6 +2,11 @@
 
 This is a Kotlin-based Android application built with **Jetpack Compose**. It serves as a UI prototype for a security application designed to capture "intruder selfies" when unauthorized access attempts are made.
 
+## 📱 App UI Mockups
+Here's a preview of the prototype screens:
+![Intruder Selfie UI Mockup](BCO.8e705521-0743-41f1-8f9a-aef89b3d0284.png)
+
+
 ## Current Features (UI Prototype)
 *   **Lock Screen Simulation:** A secure-looking interface for PIN entry.
 *   **Security Overview:** Displays the current status of failed attempts and capture thresholds.
